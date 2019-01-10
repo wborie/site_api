@@ -20,6 +20,7 @@ $headers .= "From: Personal Website <will.borie1@gmail.com>" . "\r\n";
 $headers .= "Reply-To: Personal Website <will.borie1@gmail.com>" . "\r\n";
 $headers .= "X-Mailer: PHP/" . "\r\n";
 echo $headers;
+
 if (mail('will.borie@gmail.com', $subject, $message, $headers)) {
     exit("success");
 } else exit("failure");

@@ -1,7 +1,7 @@
 <?php  // ECHOing/VARDUMPing will cause json read issues in front end, put everything in the return
 
 header('Access-Control-Allow-Origin: *');
-
+header('Access-Control-Allow-Headers: *');
 // var_dump($_SERVER);
 $postBody = file_get_contents('php://input');
 $postBody = json_decode($postBody);
