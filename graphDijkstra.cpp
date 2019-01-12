@@ -30,10 +30,15 @@ int main(int argc, char const *argv[]) // Remember to manually 'make' when makin
 		std::cout << "Bad input - incorrect number of arguments";
 		return 0;
 	}
-	std::string nodeStr = argv[1];
+	std::string firstInput = argv[1];
+	std::string nodeStr = "";
+	for(int i = 0; i < firstInput.length(); i++) {
+		if (firstInput[i] != '\"')
+			nodeStr += firstInput[i];
+	}
 	std::string currentNode = "";
 	std::vector<std::string> nodes;
-	for(int i = 1; i < nodeStr.length() - 1; i++) {
+	for(int i = 0; i < nodeStr.length(); i++) {
 		char currentChar = nodeStr[i];
 		if (currentChar == '[' || currentChar == ']') continue;
 		else if (currentChar == ',') {
@@ -53,7 +58,12 @@ int main(int argc, char const *argv[]) // Remember to manually 'make' when makin
 
 
 	// Read edges
-	std::string edgeStr = argv[2];
+	std::string secondInput = argv[2];
+	std::string edgeStr = "";
+	for(int i = 0; i < secondInput.length(); i++) {
+		if (secondInput[i] != '\"')
+			edgeStr += secondInput[i];
+	}
 	std::string currentEdgeStart = "";
 	std::string currentEdgeEnd = "";
 	std::string currentEdgeWeight = "";
@@ -62,7 +72,7 @@ int main(int argc, char const *argv[]) // Remember to manually 'make' when makin
 	std::vector<std::string> edgeStarts;
 	std::vector<std::string> edgeEnds;
 	std::vector<std::string> edgeWeights;
-	for(int i = 1; i < edgeStr.length() - 1; i++) {
+	for(int i = 0; i < edgeStr.length(); i++) {
 		char currentChar = edgeStr[i];
 		if (currentChar == '[' || currentChar == ']') continue;
 		else if (currentChar == ',') {
@@ -100,9 +110,12 @@ int main(int argc, char const *argv[]) // Remember to manually 'make' when makin
 
 	// std::cout << graph.getGraphString();
 	// std::cout << "=====================" << std::endl;
-	std::string startNode = argv[3];
-	startNode.erase(startNode[0]);
-	startNode.erase(startNode[startNode.length() - 1]);
+	std::string thirdInput = argv[3];
+	std::string startNode = "";
+	for(int i = 0; i < thirdInput.length(); i++) {
+		if (thirdInput[i] != '\"')
+			startNode += thirdInput[i];
+	}
 	std::vector<std::string> dijkstraResult = graph.dijkstra(startNode);
 	for(unsigned int i = 0; i < dijkstraResult.size(); i++) {
 		std::cout << dijkstraResult[i] << std::endl;
