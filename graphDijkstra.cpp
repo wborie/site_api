@@ -33,7 +33,7 @@ int main(int argc, char const *argv[]) // Remember to manually 'make' when makin
 	std::string nodeStr = argv[1];
 	std::string currentNode = "";
 	std::vector<std::string> nodes;
-	for(int i = 0; i < nodeStr.length(); i++) {
+	for(int i = 1; i < nodeStr.length() - 1; i++) {
 		char currentChar = nodeStr[i];
 		if (currentChar == '[' || currentChar == ']') continue;
 		else if (currentChar == ',') {
@@ -62,7 +62,7 @@ int main(int argc, char const *argv[]) // Remember to manually 'make' when makin
 	std::vector<std::string> edgeStarts;
 	std::vector<std::string> edgeEnds;
 	std::vector<std::string> edgeWeights;
-	for(int i = 0; i < edgeStr.length(); i++) {
+	for(int i = 1; i < edgeStr.length() - 1; i++) {
 		char currentChar = edgeStr[i];
 		if (currentChar == '[' || currentChar == ']') continue;
 		else if (currentChar == ',') {
@@ -100,7 +100,10 @@ int main(int argc, char const *argv[]) // Remember to manually 'make' when makin
 
 	// std::cout << graph.getGraphString();
 	// std::cout << "=====================" << std::endl;
-	std::vector<std::string> dijkstraResult = graph.dijkstra(argv[3]);
+	std::string startNode = argv[3];
+	startNode.erase(startNode[0]);
+	startNode.erase(startNode[startNode.length() - 1]);
+	std::vector<std::string> dijkstraResult = graph.dijkstra(startNode);
 	for(unsigned int i = 0; i < dijkstraResult.size(); i++) {
 		std::cout << dijkstraResult[i] << std::endl;
 	}
